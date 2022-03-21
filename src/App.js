@@ -76,14 +76,14 @@ const handleAddFormSubmit = (event) =>
   //check for duplicated id
   if(users.find(function(users){return users.id === newUser.id}))
   {
-    document.getElementById('err').innerHTML = 'id alredy exsist';
+    document.getElementById('message').innerHTML = 'id is alredy exsist';
     return;
   }
   //create a new users array
   const newUsers = [...users, newUser];
   //call the function and set a new array
   setUsers(newUsers);
-  document.getElementById('err').innerHTML = '';
+  document.getElementById('message').innerHTML = 'user added successfully';
 }
 
 //handle the new user adding when submit
@@ -206,7 +206,7 @@ const handleDeleteClick = (userId) =>
         />
         <button type='submit'>add</button>
       </form>
-      <div id='err'></div>
+      <div id='message'>add a new user</div>
     </div>
   );
 }

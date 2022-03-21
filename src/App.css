@@ -40,3 +40,13 @@ form td:last-child {
 form * {
   font-size: 20px;
 }
+
+#message {
+  font-size: 22px;
+  margin: 5px 0;
+  width: 30%;
+  background-color: #99ebff;
+  border: 1px solid #777;
+  padding: 10px;
+  border-radius: 10px;
+}
