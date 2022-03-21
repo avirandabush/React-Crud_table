@@ -148,6 +148,8 @@ const handleDeleteClick = (userId) =>
 
   return (
     <div className="app-container">
+      <h1>CRUD TABLE</h1>
+      <h2>Create Read Update and Delete</h2>
       <form onSubmit={handleEditedFormSubmit}>
         <table>
           <thead>
@@ -166,11 +168,13 @@ const handleDeleteClick = (userId) =>
                   //if id matches, show edit version, otherwise: show row data
                   editUserId === user.id ? 
                   <EditRows 
+                    key={user.id}
                     editFormData={editFormData}
                     handleEditFormChange={handleEditFormChange}
                     handleCancelClick={handleCancelClick}
                   /> : 
                   <ReadOnlyRow
+                    key={user.id}
                     user={user}
                     handleEditClick={handleEditClick}
                     handleDeleteClick={handleDeleteClick}
@@ -186,25 +190,25 @@ const handleDeleteClick = (userId) =>
         <input 
           type='text' 
           name='id' 
-          placeholder='enter id' 
+          placeholder='Enter your ID' 
           required 
           onChange={handleAddFormChange}
         />
         <input 
           type='text' 
           name='firstName' 
-          placeholder='enter id' 
+          placeholder='Enter your first name' 
           required 
           onChange={handleAddFormChange}
         />
         <input 
           type='text' 
           name='lastName' 
-          placeholder='enter id' 
+          placeholder='Enter your last name' 
           required 
           onChange={handleAddFormChange}
         />
-        <button type='submit'>add</button>
+        <button type='submit'>Add</button>
       </form>
       <div id='message'>add a new user</div>
     </div>
