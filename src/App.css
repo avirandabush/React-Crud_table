@@ -45,8 +45,18 @@ form * {
   font-size: 18px;
 }
 
+.adding-form {
+  display: block;
+}
+
+input{
+  font-size: 12px;
+  height: 20px;
+  margin: 2px;
+}
+
 #message {
-  font-size: 18px;
+  font-size: 15px;
   margin: 5px 0;
   padding: 10px;
   background-color: #99ebff;
@@ -61,4 +71,18 @@ button {
   color: #000;
   border-radius: 10px;
   padding: 1px 12px;
+}
+
+@media only screen and (max-width: 600px) {
+  
+    body {
+      font-size: 15px;
+    }
+    form * {
+      font-size: 12px;
+    }
+    button {
+      width: auto;
+      padding: 2px;
+    }
 }

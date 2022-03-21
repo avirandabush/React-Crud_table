@@ -6,10 +6,8 @@ import EditRows from './componenets/EditRows';
 
 function App() 
 {
-
 //store the data in the state
 const [users, setUsers] = useState(data);
-
 //get data from 'add user' form
 const [addFormData, setAddFormData] = useState({
   id: '',
@@ -18,7 +16,7 @@ const [addFormData, setAddFormData] = useState({
 })
 
 //set message for success or failure
-const [addingMessage, setAddingMessage] = useState('');
+const [addingMessage, setAddingMessage] = useState(`I'm waiting...`);
 
 //edit user input data
 const [editFormData, setEditFormData] = useState({
@@ -86,10 +84,10 @@ const handleAddFormSubmit = (event) =>
   const newUsers = [...users, newUser];
   //call the function and set a new array
   setUsers(newUsers);
-  setAddingMessage('user added successfully');
+  setAddingMessage('User added successfully!');
 }
 
-//handle the new user adding when submit
+//handle the edited user adding when submit
 const handleEditedFormSubmit = (event) =>
 {
   event.preventDefault();
@@ -157,10 +155,10 @@ const handleDeleteClick = (userId) =>
         <table>
           <thead>
             <tr>
-              <th>id</th>
-              <th>first name</th>
-              <th>last name</th>
-              <th>actions</th>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -176,6 +174,7 @@ const handleDeleteClick = (userId) =>
                     handleCancelClick={handleCancelClick}
                   /> : 
                   <ReadOnlyRow
+                    key={user.id}
                     user={user}
                     handleEditClick={handleEditClick}
                     handleDeleteClick={handleDeleteClick}
@@ -187,7 +186,7 @@ const handleDeleteClick = (userId) =>
         </table>
       </form>
       <h2>Add new user</h2>
-      <form onSubmit={handleAddFormSubmit}>
+      <form onSubmit={handleAddFormSubmit} className="adding-form" >
         <input 
           type='text' 
           name='id' 
