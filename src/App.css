@@ -6,6 +6,7 @@
   width: 80%;
   margin: auto;
   text-align: center;
+  background-color: #eee;
 }
 
 table {
@@ -22,12 +23,12 @@ td {
 }
 
 th {
-  background-color: #99ebff;
+  background-color: #aaa;
   border: 1px solid #777;
 }
 
 td {
-  background-color: #ccf5ff;
+  background-color: #fff;
 }
 
 form {
@@ -56,8 +57,8 @@ form * {
 }
 
 button {
-  background-color: #000;
-  color: #fff;
+  background-color: #aaa;
+  color: #000;
   border-radius: 10px;
-  padding: 0 10px;
+  padding: 1px 12px;
 }

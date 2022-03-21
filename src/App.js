@@ -17,6 +17,9 @@ const [addFormData, setAddFormData] = useState({
   lastName: ''
 })
 
+//set message for success or failure
+const [addingMessage, setAddingMessage] = useState('');
+
 //edit user input data
 const [editFormData, setEditFormData] = useState({
   id: '',
@@ -33,13 +36,13 @@ const handleAddFormChange = (event) =>
   event.preventDefault();
 
   //get the name attribute from the inputs
-  const fielsName = event.target.getAttribute('name');
+  const fieldName = event.target.getAttribute('name');
   //get the values
   const fieldValue = event.target.value;
   //make copy of the existing form data
   const newFormData = {...addFormData};
   //update the data with the new value
-  newFormData[fielsName] = fieldValue;
+  newFormData[fieldName] = fieldValue;
   //set into state, call the set function
   setAddFormData(newFormData);
 }
@@ -74,16 +77,16 @@ const handleAddFormSubmit = (event) =>
     lastName: addFormData.lastName
   }
   //check for duplicated id
-  if(users.find(function(users){return users.id === newUser.id}))
+  if(users.find(users => users.id === newUser.id))
   {
-    document.getElementById('message').innerHTML = 'id is alredy exsist';
+    setAddingMessage('ID is alredy exsist');
     return;
   }
   //create a new users array
   const newUsers = [...users, newUser];
   //call the function and set a new array
   setUsers(newUsers);
-  document.getElementById('message').innerHTML = 'user added successfully';
+  setAddingMessage('user added successfully');
 }
 
 //handle the new user adding when submit
@@ -168,13 +171,11 @@ const handleDeleteClick = (userId) =>
                   //if id matches, show edit version, otherwise: show row data
                   editUserId === user.id ? 
                   <EditRows 
-                    key={user.id}
                     editFormData={editFormData}
                     handleEditFormChange={handleEditFormChange}
                     handleCancelClick={handleCancelClick}
                   /> : 
                   <ReadOnlyRow
-                    key={user.id}
                     user={user}
                     handleEditClick={handleEditClick}
                     handleDeleteClick={handleDeleteClick}
@@ -185,7 +186,7 @@ const handleDeleteClick = (userId) =>
           </tbody>
         </table>
       </form>
-      <h2>add user</h2>
+      <h2>Add new user</h2>
       <form onSubmit={handleAddFormSubmit}>
         <input 
           type='text' 
@@ -208,9 +209,9 @@ const handleDeleteClick = (userId) =>
           required 
           onChange={handleAddFormChange}
         />
-        <button type='submit'>Add</button>
+        <button type='submit'>SEND</button>
       </form>
-      <div id='message'>add a new user</div>
+      <div id='message'>{addingMessage}</div>
     </div>
   );
 }
