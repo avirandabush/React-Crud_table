@@ -8,12 +8,14 @@ function App()
 {
 //store the data in the state
 const [users, setUsers] = useState(data);
-//get data from 'add user' form
-const [addFormData, setAddFormData] = useState({
+
+const initialValue ={
   id: '',
   firstName: '',
   lastName: ''
-})
+}
+//get data from 'add user' form
+const [addFormData, setAddFormData] = useState(initialValue)
 
 //set message for success or failure
 const [addingMessage, setAddingMessage] = useState(`I'm waiting...`);
@@ -85,6 +87,7 @@ const handleAddFormSubmit = (event) =>
   //call the function and set a new array
   setUsers(newUsers);
   setAddingMessage('User added successfully!');
+  setAddFormData(initialValue);
 }
 
 //handle the edited user adding when submit
@@ -193,6 +196,7 @@ const handleDeleteClick = (userId) =>
           placeholder='Enter your ID' 
           required 
           onChange={handleAddFormChange}
+          value={addFormData.id}
         />
         <input 
           type='text' 
@@ -200,6 +204,7 @@ const handleDeleteClick = (userId) =>
           placeholder='Enter your first name' 
           required 
           onChange={handleAddFormChange}
+          value={addFormData.firstName}
         />
         <input 
           type='text' 
@@ -207,6 +212,7 @@ const handleDeleteClick = (userId) =>
           placeholder='Enter your last name' 
           required 
           onChange={handleAddFormChange}
+          value={addFormData.lastName}
         />
         <button type='submit'>SEND</button>
         <div id='message'>{addingMessage}</div>
