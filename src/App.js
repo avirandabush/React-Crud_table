@@ -197,6 +197,8 @@ const handleDeleteClick = (userId) =>
           required 
           onChange={handleAddFormChange}
           value={addFormData.id}
+          pattern='[0-9]{3,9}'
+          title='3-9 Digits'
         />
         <input 
           type='text' 
@@ -205,6 +207,8 @@ const handleDeleteClick = (userId) =>
           required 
           onChange={handleAddFormChange}
           value={addFormData.firstName}
+          pattern='[A-Za-zא-ת]{2,15}'
+          title='2-15 Letters'
         />
         <input 
           type='text' 
@@ -213,6 +217,8 @@ const handleDeleteClick = (userId) =>
           required 
           onChange={handleAddFormChange}
           value={addFormData.lastName}
+          pattern='[A-Za-zא-ת]{2,15}'
+          title='2-15 Letters'
         />
         <button type='submit'>SEND</button>
         <div id='message'>{addingMessage}</div>
