@@ -185,8 +185,8 @@ const handleDeleteClick = (userId) =>
           </tbody>
         </table>
       </form>
-      <h2>Add new user</h2>
       <form onSubmit={handleAddFormSubmit} className="adding-form" >
+        <h2>Add new user</h2>
         <input 
           type='text' 
           name='id' 
@@ -209,8 +209,8 @@ const handleDeleteClick = (userId) =>
           onChange={handleAddFormChange}
         />
         <button type='submit'>SEND</button>
+        <div id='message'>{addingMessage}</div>
       </form>
-      <div id='message'>{addingMessage}</div>
     </div>
   );
 }

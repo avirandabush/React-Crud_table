@@ -47,6 +47,9 @@ form * {
 
 .adding-form {
   display: block;
+  border: 1px solid #000;
+  margin-top: 50px;
+  padding: 20px 10%;
 }
 
 input{
