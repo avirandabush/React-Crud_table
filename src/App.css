@@ -7,6 +7,7 @@
   margin: auto;
   text-align: center;
   background-color: #eee;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 table {
@@ -52,6 +53,10 @@ form * {
   padding: 20px 10%;
 }
 
+.adding-form > h2 {
+  font-size: 25px;
+}
+
 input{
   font-size: 12px;
   height: 20px;
@@ -59,13 +64,8 @@ input{
 }
 
 #message {
-  font-size: 15px;
-  margin: 5px 0;
-  padding: 10px;
-  background-color: #99ebff;
-  border: 1px solid #777;
-  padding: 10px;
-  border-radius: 10px;
+  font-size: 18px;
+  margin: 10px 0;
   text-align: center;
 }
 

@@ -17,11 +17,11 @@ function App()
     lastName: ''
   }
 
-  //get data from 'add user' form
   const [addFormData, setAddFormData] = useState(initialValue)
 
   //set message for success or failure
   const [addingMessage, setAddingMessage] = useState(`I'm waiting...`);
+  const [addingMsgStyle, setAddingMsgStyle] = useState('#000');
 
   //edit user input data
   const [editFormData, setEditFormData] = useState({
@@ -30,7 +30,6 @@ function App()
     lastName: ''
   })
 
-  //edit user
   const [editUserId, setEditUserId] = useState(null);
 
   //manage the input data by the state
@@ -83,13 +82,17 @@ function App()
     if(users.find(users => users.id === newUser.id))
     {
       setAddingMessage('ID is alredy exsist');
+      setAddingMsgStyle('#f00');
       return;
     }
     //create a new users array
     const newUsers = [...users, newUser];
+
     //call the function and set a new array
     setUsers(newUsers);
     setAddingMessage('User added successfully!');
+    setAddingMsgStyle('#0a0');
+
     //clear input fiels after submit
     setAddFormData(initialValue);
   }
@@ -113,7 +116,6 @@ function App()
     const index = users.findIndex((user) => user.id === editUserId);
     //update the array in the correct position
     newUsers[index] = editedUser;
-    //call the function and set a new array
     setUsers(newUsers);
     setEditUserId(null);
   }
@@ -122,7 +124,7 @@ function App()
   const handleEditClick = (event, user) =>
   {
     event.preventDefault();
-    //set the edit
+
     setEditUserId(user.id);
     //make edit object
     const formValues = 
@@ -144,7 +146,6 @@ function App()
   //handle the delete user option
   const handleDeleteClick = (userId) =>
   {
-    //create new array
     const newUsers = [...users];
     //find the index you want to delete
     const index = users.findIndex((user) => user.id === userId)
@@ -225,7 +226,7 @@ function App()
           title='2-15 Letters'
         />
         <button type='submit'>SEND</button>
-        <div id='message'>{addingMessage}</div>
+        <div id='message' style={{'color': addingMsgStyle}}>{addingMessage}</div>
       </form>
     </div>
   );
